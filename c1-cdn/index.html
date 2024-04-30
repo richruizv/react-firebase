@@ -17,9 +17,15 @@
     </footer>
 
     <script type="text/babel">
-        const getMessage = () => "Hello World";
-        document.getElementById('banner').innerHTML = getMessage();
+      const Banner = () => {
+          return (
+            <div>
+              My first component, which is a Banner
+            </div>
+          )
+        }
+
+      ReactDOM.render(<Banner />, document.getElementById('banner'))
     </script>
-    
 </body>
 </html>
