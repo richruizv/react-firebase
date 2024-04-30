@@ -1,12 +1,14 @@
-import logo from './assets/logo.svg'
+
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  let name = 'Mario'
+  let [name, setName] = useState('Mario')
 
   const changeName = () => { 
-    name = 'Luigi'
-    console.log('luigi')
+    setName('Luigi')
+    // this console still shows "Mario" because the setName function affects the variable after the console was executed
+    console.log(name)
   }
 
   return (
