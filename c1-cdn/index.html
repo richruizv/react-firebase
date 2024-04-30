@@ -21,6 +21,12 @@
       const subtitle = 'This is a website for learning in react'
       const address = 'mailto:rich.ruiz.v@gmail.com'
 
+      const clickFunction = () => {
+        console.log('button was clicked')
+        console.log(`title is ${title}`)
+        console.log(`subtitle is ${subtitle}`)
+      }
+
       const Banner = () => {
           return (
             // This is an example of a comment
@@ -29,8 +35,7 @@
               <p>{subtitle}</p>
               <p> Today date is {new Date().toDateString()}</p>
               <p>Random number is {Math.random() * 100}</p>
-              <a href={address}> Email me! </a>
-
+              <a href={address} onClick={clickFunction}> Email me! </a>
             </div>
           )
         }
