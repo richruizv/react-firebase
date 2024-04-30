@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Your custom script here -->
+</head>
+<body>
+    <h1>My first website</h1>
+    <div id="banner"></div>
+    <footer>
+        <p>My footer</p>
+    </footer>
+
+    <script type="text/babel">
+        const getMessage = () => "Hello World";
+        document.getElementById('banner').innerHTML = getMessage();
+    </script>
+    
+</body>
+</html>
