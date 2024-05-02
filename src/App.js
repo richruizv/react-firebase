@@ -1,6 +1,6 @@
 
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Title from './components/Title';
 
 function App() {
@@ -29,10 +29,10 @@ function App() {
       { showEvents && <button onClick={() => setShowEvents(false)}>Hide events</button> }
       { !showEvents && <button onClick={() => setShowEvents(true)}>Show events</button> }
       { showEvents && events.map((event, index) => (
-        <div key={event.id} >
+        <React.Fragment key={event.id} >
           <Title title={event.name} />
           <button onClick={() => handleClick(event.id)}>Remove event</button>
-        </div> 
+        </React.Fragment>
       ))}
     </div>
   );
