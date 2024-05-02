@@ -2,6 +2,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import Title from './components/Title';
+import Modal from './components/Modal';
 
 function App() {
   let [showEvents, setShowEvents] = useState(true);
@@ -34,6 +35,10 @@ function App() {
           <button onClick={() => handleClick(event.id)}>Remove event</button>
         </React.Fragment>
       ))}
+      <Modal>
+        <h2>10% off coupon code</h2>
+        <p>Use the Code RICHARD10 at the checkout!</p>
+      </Modal>
     </div>
   );
 }
