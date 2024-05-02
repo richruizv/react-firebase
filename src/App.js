@@ -3,7 +3,6 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-  let [name, setName] = useState('Mario')
   let [events, setEvents] = useState([
     { id: 1, name: 'Moo Moo Meadows'},
     { id: 2, name: 'Rainbow Road'},
@@ -12,18 +11,22 @@ function App() {
     { id: 5, name: 'Toad Harbor'}
   ])
 
-  const changeName = () => { 
-    setName('Luigi')
-    // this console still shows "Mario" because the setName function affects the variable after the console was executed
-    console.log(name)
+  const handleClick = (id) => { 
+    // we pass a function here which returns a new state value
+    setEvents((prevEvents) => {
+      return prevEvents.filter( (event) => {
+        return event.id !== id
+      })
+    })
   }
 
   return (
     <div className="App">
-      <h2>It's a me {name}</h2>
-      <button onClick={changeName}>Change name</button>
       { events.map((event, index) => (
-        <div key={event.id} ><h2>{ index + 1 } - {event.name}</h2></div> 
+        <div key={event.id} >
+          <h2>{ index + 1 } - {event.name}</h2>
+          <button onClick={() => handleClick(event.id)}>Remove event</button>
+        </div> 
       ))}
     </div>
   );
