@@ -5,6 +5,7 @@ import Title from './components/Title';
 import Modal from './components/Modal';
 
 function App() {
+  let [showModal, setShowModal] = useState(true)
   let [showEvents, setShowEvents] = useState(true);
   let [events, setEvents] = useState([
     { id: 1, name: 'Moo Moo Meadows'},
@@ -14,7 +15,7 @@ function App() {
     { id: 5, name: 'Toad Harbor'}
   ])
 
-  console.log(showEvents)
+  console.log(showModal)
 
   const handleClick = (id) => { 
     // we pass a function here which returns a new state value
@@ -23,6 +24,10 @@ function App() {
         return event.id !== id
       })
     })
+  }
+
+  const handleClose = () => {
+    setShowModal(false)
   }
 
   return (
@@ -35,10 +40,10 @@ function App() {
           <button onClick={() => handleClick(event.id)}>Remove event</button>
         </React.Fragment>
       ))}
-      <Modal>
+      { showModal && <Modal handleClose={handleClose}>
         <h2>10% off coupon code</h2>
         <p>Use the Code RICHARD10 at the checkout!</p>
-      </Modal>
+      </Modal> }
     </div>
   );
 }
