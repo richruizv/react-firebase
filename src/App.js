@@ -1,8 +1,8 @@
 
 import './App.css';
 import React, { useState } from 'react';
-import Title from './components/Title';
 import Modal from './components/Modal';
+import EventList from './components/EventList';
 
 function App() {
   let [showModal, setShowModal] = useState(false)
@@ -15,7 +15,6 @@ function App() {
     { id: 5, name: 'Toad Harbor'}
   ])
 
-  console.log(showModal)
 
   const handleClick = (id) => { 
     // we pass a function here which returns a new state value
@@ -38,12 +37,7 @@ function App() {
     <div className="App">
       { showEvents && <button onClick={() => setShowEvents(false)}>Hide events</button> }
       { !showEvents && <button onClick={() => setShowEvents(true)}>Show events</button> }
-      { showEvents && events.map((event, index) => (
-        <React.Fragment key={event.id} >
-          <Title title={event.name} />
-          <button onClick={() => handleClick(event.id)}>Remove event</button>
-        </React.Fragment>
-      ))}
+      { showEvents && <EventList events={events} handleClick={handleClick} />}
       <br />
       <button onClick={handleShow}> Show Modal</button>
       { showModal && <Modal handleClose={handleClose}>
