@@ -5,7 +5,7 @@ import Title from './components/Title';
 import Modal from './components/Modal';
 
 function App() {
-  let [showModal, setShowModal] = useState(true)
+  let [showModal, setShowModal] = useState(false)
   let [showEvents, setShowEvents] = useState(true);
   let [events, setEvents] = useState([
     { id: 1, name: 'Moo Moo Meadows'},
@@ -30,6 +30,10 @@ function App() {
     setShowModal(false)
   }
 
+  const handleShow = () => {
+    setShowModal(true)
+  }
+
   return (
     <div className="App">
       { showEvents && <button onClick={() => setShowEvents(false)}>Hide events</button> }
@@ -40,6 +44,8 @@ function App() {
           <button onClick={() => handleClick(event.id)}>Remove event</button>
         </React.Fragment>
       ))}
+      <br />
+      <button onClick={handleShow}> Show Modal</button>
       { showModal && <Modal handleClose={handleClose}>
         <h2>10% off coupon code</h2>
         <p>Use the Code RICHARD10 at the checkout!</p>
