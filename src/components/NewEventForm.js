@@ -10,9 +10,23 @@ export default function NewEventForm() {
     setTitle('')
     setDate('')
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const event = {
+      title: title,
+      date: date,
+      id: Math.floor(Math.random() * 10000)
+    }
+
+    resetForm()
+
+    console.log(event)
+
+  }
   
   return (
-    <form className='new-event-form'>
+    <form className='new-event-form' onSubmit={handleSubmit} >
       <label htmlFor="title-event">
         <span>Title event</span>
         <input type="text" name='title-event' 
