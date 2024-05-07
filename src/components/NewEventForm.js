@@ -14,6 +14,12 @@ export default function NewEventForm({ addEvent }) {
       id: Math.floor(Math.random() * 10000)
     }
     addEvent(event)
+    resetForm()
+  }
+
+  const resetForm = () => {
+    title.current.value = ''
+    date.current.value = ''
   }
   
   return (
