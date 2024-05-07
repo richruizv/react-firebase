@@ -8,14 +8,15 @@ import NewEventForm from './components/NewEventForm';
 function App() {
   let [showModal, setShowModal] = useState(false)
   let [showEvents, setShowEvents] = useState(true);
-  let [events, setEvents] = useState([
-    { id: 1, name: 'Moo Moo Meadows'},
-    { id: 2, name: 'Rainbow Road'},
-    { id: 3, name: 'Bowser Castle'},
-    { id: 4, name: 'Yoshi Valley'},
-    { id: 5, name: 'Toad Harbor'}
-  ])
+  let [events, setEvents] = useState([])
 
+  const addEvent = (event) => {
+    setEvents((prevEvents) => {
+      return [...prevEvents, event]
+    })
+
+    setShowModal(false)
+  }
 
   const handleClick = (id) => { 
     // we pass a function here which returns a new state value
@@ -36,13 +37,14 @@ function App() {
 
   return (
     <div className="App">
+      <button onClick={handleShow}> App new event</button>
       { showEvents && <button onClick={() => setShowEvents(false)}>Hide events</button> }
       { !showEvents && <button onClick={() => setShowEvents(true)}>Show events</button> }
-      { showEvents && <EventList events={events} handleClick={handleClick} />}
+      All the events in Richard land
+      { showEvents && events.length > 0 && <EventList events={events} handleClick={handleClick} />}
       <br />
-      <button onClick={handleShow}> App new event</button>
       { showModal && <Modal handleClose={handleClose}>
-        <NewEventForm />
+        <NewEventForm addEvent={addEvent} />
 
       </Modal> }
     </div>
