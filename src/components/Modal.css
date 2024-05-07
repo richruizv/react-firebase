@@ -14,3 +14,7 @@
   background: #fff;
   border-radius: 10px;
 }
+
+.modal .closeBtn {
+  width: 100%;
+}

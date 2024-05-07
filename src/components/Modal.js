@@ -6,7 +6,7 @@ export default function Modal({ children,handleClose }) {
     <div className="modal-backdrop">
       <div className="modal">
         {children}
-        <button onClick={handleClose}>Close modal</button>
+        <button className="closeBtn" onClick={handleClose}>Close modal</button>
       </div>
     </div>
   ), document.body )
