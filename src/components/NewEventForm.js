@@ -1,43 +1,31 @@
 import './NewEventForm.css'
-import { useState } from 'react';
+import { useRef } from 'react';
 
 export default function NewEventForm({ addEvent }) {
 
-  let [title,setTitle] = useState('');
-  let [date,setDate] = useState('')
-
-  const resetForm = () => { 
-    setTitle('')
-    setDate('')
-  }
+  const title = useRef();
+  const date = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const event = {
-      title: title,
-      date: date,
+      title: title.current.value,
+      date: date.current.value,
       id: Math.floor(Math.random() * 10000)
     }
     addEvent(event)
-    resetForm();
   }
   
   return (
     <form className='new-event-form' onSubmit={handleSubmit} >
       <label htmlFor="title-event">
         <span>Title event</span>
-        <input type="text" name='title-event' 
-          onChange={(e) => { setTitle(e.target.value) }} value={title} />
+        <input type="text" name='title-event' ref={title}/>
       </label>
       <label htmlFor="date-event">
         <span>Date event</span>
-        <input type="date" name="date-event" 
-          onChange={(e) => { setDate(e.target.value) }} value={date} />
+        <input type="date" name="date-event" ref={date} />
       </label>
-      <div>
-        {title} - {date}
-      </div>
-      <p onClick={resetForm}>Reset the form</p>
       <button type="submit">Submit</button>
     </form>
   )
